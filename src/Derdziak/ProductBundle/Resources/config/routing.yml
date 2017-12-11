@@ -1,0 +1,4 @@
+derdziak_product_homepage:
+    path:     /product/create
+    methods:  POST
+    defaults: { _controller: DerdziakProductBundle:Api:create }

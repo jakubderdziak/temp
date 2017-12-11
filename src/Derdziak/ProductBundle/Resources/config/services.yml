@@ -1,0 +1,24 @@
+services:
+  derdziak_product.form.product.handler:
+    class: Derdziak\ProductBundle\Form\Handler\ProductFormHandler
+    public: true
+    arguments:
+      - '@form.factory'
+      - '@doctrine.orm.entity_manager'
+
+  derdziak_product.rates.reader:
+    class: Derdziak\ProductBundle\Rates\Reader
+    public: false
+
+  derdziak_product.rates.writer:
+      class: Derdziak\ProductBundle\Rates\Writer
+      public: false
+      arguments:
+        - '@doctrine.orm.entity_manager'
+
+  derdziak_product.rates.downloader:
+    class: Derdziak\ProductBundle\Rates\Downloader
+    public: true
+    arguments:
+      - '@derdziak_product.rates.reader'
+      - '@derdziak_product.rates.writer'
